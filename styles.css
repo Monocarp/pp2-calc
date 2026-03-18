@@ -100,6 +100,8 @@ h2 {
   border-radius: 8px;
   padding: 1.2rem;
   margin-bottom: 1.2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .panel-note { font-size: .8rem; color: #888; margin: -.4rem 0 .8rem 0; }
 
@@ -260,10 +262,98 @@ tr.shared-building td:first-child::after {
   color: #fff;
 }
 
-/* ── Responsive ── */
+/* ── Table scroll wrapper ── */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -.4rem;
+  padding: 0 .4rem;
+}
+
+/* ── Responsive: Tablets & small laptops ── */
+@media (max-width: 768px) {
+  .container { padding: 1rem .75rem; }
+  header h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.1rem; }
+  .prefs-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+/* ── Responsive: Phones ── */
 @media (max-width: 600px) {
-  .pop-grid { grid-template-columns: repeat(2, 1fr); }
-  .data-table { font-size: .82rem; }
-  .data-table th, .data-table td { padding: .35rem .4rem; }
-  header h1 { font-size: 1.4rem; }
+  body { font-size: 15px; }
+  .container { padding: .75rem .5rem; }
+  header { margin-bottom: 1.2rem; }
+  header h1 { font-size: 1.3rem; }
+  .subtitle { font-size: .85rem; }
+
+  /* Input section */
+  .input-section { padding: .9rem .7rem; margin-bottom: 1.2rem; }
+  .pop-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+  }
+  .pop-input label { font-size: .8rem; }
+  .pop-input input {
+    font-size: 16px; /* prevents iOS auto-zoom */
+    padding: .6rem .5rem;
+  }
+
+  /* Buttons – full width stacked */
+  .button-row {
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .btn {
+    width: 100%;
+    padding: .7rem 1rem;
+    font-size: 1rem;
+    min-height: 44px; /* touch target */
+  }
+
+  /* Producer preferences */
+  .producer-prefs-section { padding: .9rem .7rem; }
+  .prefs-grid { grid-template-columns: 1fr; gap: .6rem; }
+  .pref-select {
+    font-size: 16px; /* prevents iOS auto-zoom */
+    padding: .55rem .5rem;
+    min-height: 44px;
+  }
+
+  /* Results panels */
+  .results-section { margin-top: 1rem; }
+  .results-panel { padding: .9rem .6rem; margin-bottom: 1rem; }
+  .panel-note { font-size: .75rem; }
+
+  /* Tables */
+  .data-table { font-size: .8rem; }
+  .data-table th { padding: .4rem .35rem; font-size: .78rem; }
+  .data-table td { padding: .35rem .35rem; }
+  .data-table td.count-cell { min-width: 48px; }
+
+  .breakdown-tag, .demand-source-tag { font-size: .72rem; padding: .1rem .35rem; }
+
+  /* Services grid */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+  .service-tier { padding: .6rem; }
+  .service-tier h3 { font-size: .85rem; }
+  .service-tier li { font-size: .78rem; }
+}
+
+/* ── Responsive: Very small phones ── */
+@media (max-width: 380px) {
+  .container { padding: .5rem .35rem; }
+  header h1 { font-size: 1.15rem; }
+  .pop-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .pop-input input { padding: .5rem .4rem; }
+
+  .data-table { font-size: .75rem; }
+  .data-table th { padding: .3rem .25rem; }
+  .data-table td { padding: .3rem .25rem; }
+  .breakdown-tag, .demand-source-tag { font-size: .68rem; }
+
+  .results-panel { padding: .7rem .4rem; }
+  .prefs-grid { gap: .5rem; }
 }
