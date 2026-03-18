@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PP2 Production Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⚙️ PP2 Production Calculator</h1>
+      <p class="subtitle">Enter number of houses per tier to calculate production needs</p>
+    </header>
+
+    <section class="input-section">
+      <h2>🏘️ Population Houses</h2>
+      <div class="pop-grid">
+        <div class="pop-input" data-tier="pioneers">
+          <label>Pioneers</label>
+          <input type="number" id="pop-pioneers" min="0" value="0" step="1">
+        </div>
+        <div class="pop-input" data-tier="colonists">
+          <label>Colonists</label>
+          <input type="number" id="pop-colonists" min="0" value="0" step="1">
+        </div>
+        <div class="pop-input" data-tier="farmers">
+          <label>Farmers</label>
+          <input type="number" id="pop-farmers" min="0" value="0" step="1">
+        </div>
+        <div class="pop-input" data-tier="townsmen">
+          <label>Townsmen</label>
+          <input type="number" id="pop-townsmen" min="0" value="0" step="1">
+        </div>
+        <div class="pop-input" data-tier="workers">
+          <label>Workers</label>
+          <input type="number" id="pop-workers" min="0" value="0" step="1">
+        </div>
+        <div class="pop-input" data-tier="merchants">
+          <label>Merchants</label>
+          <input type="number" id="pop-merchants" min="0" value="0" step="1">
+        </div>
+        <div class="pop-input" data-tier="paragons">
+          <label>Paragons</label>
+          <input type="number" id="pop-paragons" min="0" value="0" step="1">
+        </div>
+      </div>
+      <div class="button-row">
+        <button id="btn-calculate" class="btn btn-primary">Calculate</button>
+        <button id="btn-clear" class="btn btn-secondary">Clear All</button>
+      </div>
+    </section>
+
+    <!-- Producer preferences (shown after calculation when alternatives exist) -->
+    <section id="producer-prefs" class="producer-prefs-section" style="display:none">
+      <h2>🔀 Producer Preferences</h2>
+      <p class="panel-note">Choose which building to use when multiple producers exist for a resource.</p>
+      <div id="prefs-grid" class="prefs-grid"></div>
+    </section>
+
+    <section id="results" class="results-section" style="display:none;">
+
+      <div class="results-panel">
+        <h2>📦 Goods Demand Per Minute</h2>
+        <table id="demand-table" class="data-table">
+          <thead>
+            <tr>
+              <th>Good</th>
+              <th class="count-header">Per Min</th>
+              <th>Demanded By</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="results-panel">
+        <h2>🏭 Total Buildings Needed</h2>
+        <p class="panel-note">Buildings used by multiple chains show a breakdown below the total.</p>
+        <table id="buildings-table" class="data-table">
+          <thead>
+            <tr>
+              <th>Building</th>
+              <th class="count-header">Count</th>
+              <th>Breakdown</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="results-panel">
+        <h2>🌿 Tile / Deposit Requirements</h2>
+        <p class="panel-note">Natural resources, fields, and deposits needed.</p>
+        <table id="tiles-table" class="data-table">
+          <thead>
+            <tr>
+              <th>Tile / Deposit</th>
+              <th class="count-header">Count</th>
+              <th>Used By</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="results-panel">
+        <h2>🏛️ Services Required</h2>
+        <div id="services-list"></div>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
